@@ -13,9 +13,17 @@ import random
 
 def main():
 
-	print("TOTETETE\n\n\n")
+	ship_number = input("Enter the number of ships (min:1, max:100, default:3)") or (3)
+	ship_number_int = int(ship_number)
+
+	Xgrid_size = input("Enter the X grid size (min:3, max:100, default:8)") or (8)
+	Xgrid_size_int = int(Xgrid_size)
+
+	Ygrid_size = input("Enter the Y grid size (min:3, max:100, default:5)") or (5)
+	Ygrid_size_int = int(Ygrid_size)
+
 	assault_list = []
-	for i in range (0, 3):
+	for i in range (0, ship_number_int):
 		randy = random.randint(0, 2)
 		assault = None
 		if randy == 0:
@@ -27,7 +35,7 @@ def main():
 		assault_list.append(assault)
 
 	support_list = []
-	for i in range (0, 3):
+	for i in range (0, ship_number_int):
 		randy = random.randint(0, 2)
 		support = None
 		if randy == 0:
@@ -40,7 +48,7 @@ def main():
 		support_list.append(support)
 
 
-	map = Grid(4, 8)
+	map = Grid(Ygrid_size_int, Xgrid_size_int)
 
 	map.print()
 	print('\n\n')

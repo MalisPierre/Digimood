@@ -132,12 +132,15 @@ class Grid():
 			#MOVING SUPPORT CLOSE TO ATTACK
 			x = pairs[i]._offensive._width
 			y = pairs[i]._offensive._heigth
-			if self._data[x][y+1]._ship == None:
-				self._data[x][y+1]._ship = pairs[i]._support
-			elif self._data[x][y-1]._ship == None:
-				self._data[x][y-1]._ship = pairs[i]._support
-			elif self._data[x+1][y]._ship == None:
-				self._data[x+1][y]._ship = pairs[i]._support
-			elif self._data[x-1][y]._ship == None:
-				self._data[x-1][y]._ship = pairs[i]._support
-			return
+			if y+1 < self._heigth and self._data[x][y+1]._ship == None:
+				self._data[x][y+1].Add_Ship(pairs[i]._support) 
+				pairs[i]._support.coordinates(x, y+1)
+			elif y > 0 and self._data[x][y-1]._ship == None:
+				self._data[x][y-1].Add_Ship(pairs[i]._support) 
+				pairs[i]._support.coordinates(x, y-1)
+			elif x+1 < self._width and self._data[x+1][y]._ship == None:
+				self._data[x+1][y].Add_Ship(pairs[i]._support) 
+				pairs[i]._support.coordinates(x+1, y)
+			elif  x > 0 and self._data[x-1][y]._ship == None:
+				self._data[x-1][y].Add_Ship(pairs[i]._support) 
+				pairs[i]._support.coordinates(x-1, y)
